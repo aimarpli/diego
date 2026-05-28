@@ -437,15 +437,15 @@
             toastContainer: document.getElementById('toast-container')
         };
 
-        // INICIALIZACIÓN DE FIREBASE (Configurado por el entorno)
+        // INICIALIZACIÓN DE FIREBASE (Configurado explícitamente por el usuario)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'coming-soon-premium-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "",
-            authDomain: "coming-soon-synced.firebaseapp.com",
-            projectId: "coming-soon-synced",
-            storageBucket: "coming-soon-synced.appspot.com",
-            messagingSenderId: "12345",
-            appId: "1:12345:web:12345"
+        const firebaseConfig = {
+            apiKey: "AIzaSyDYuReEURkNZFn3hE4XusY63vuzvvZtDQI",
+            authDomain: "launch-b1c51.firebaseapp.com",
+            projectId: "launch-b1c51",
+            storageBucket: "launch-b1c51.firebasestorage.app",
+            messagingSenderId: "212296294352",
+            appId: "1:212296294352:web:520cdf40a8b41b613623d5"
         };
 
         const app = initializeApp(firebaseConfig);
