@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Próximamente | En Construcción</title>
+    <title>Próximamente | En Construcción Sincronizado</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,7 +47,7 @@
                             '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
                         },
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(25px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' }
                         }
                     }
@@ -87,23 +87,33 @@
 
     <!-- ORBS DECORATIVOS DIFUSOS (Fondo Dinámico) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <!-- Orb 1 (Púrpura) -->
+        <!-- Orb 1 -->
         <div class="absolute top-[-10%] left-[-10%] md:top-[-15%] md:left-[-15%] w-[60vw] h-[60vw] min-w-[350px] min-h-[350px] rounded-full bg-purple-600/15 blur-[80px] md:blur-[130px] animate-blob z-0"></div>
-        <!-- Orb 2 (Azul) -->
+        <!-- Orb 2 -->
         <div class="absolute bottom-[5%] right-[-10%] md:bottom-[-10%] md:right-[-10%] w-[55vw] h-[55vw] min-w-[320px] min-h-[320px] rounded-full bg-blue-600/15 blur-[80px] md:blur-[130px] animate-blob [animation-delay:5s] z-0"></div>
-        <!-- Orb 3 (Rosa suave en centro) -->
+        <!-- Orb 3 -->
         <div class="absolute top-[35%] left-[25%] w-[45vw] h-[45vw] min-w-[250px] min-h-[250px] rounded-full bg-pink-600/10 blur-[90px] md:blur-[150px] animate-blob [animation-delay:9s] z-0"></div>
     </div>
 
     <!-- NOTIFICACIONES (TOASTS) PERSONALIZADOS -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full px-4"></div>
 
+    <!-- PANTALLA DE CARGA INICIAL -->
+    <div id="app-loading-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#030712] transition-opacity duration-500">
+        <div class="flex flex-col items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center animate-spin">
+                <i data-lucide="loader-2" class="w-6 h-6 text-white animate-pulse"></i>
+            </div>
+            <p class="text-xs font-semibold tracking-wider text-purple-400 uppercase">Sincronizando portal...</p>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
         <!-- Contenedor Logo + Marca editable -->
         <div class="flex items-center gap-3 group">
             <div id="brand-logo-container" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/25 transition-transform duration-300 group-hover:scale-110">
-                <!-- Se inyecta icono Lucide o imagen por JS -->
+                <!-- Se inyecta icono o imagen por JS -->
                 <i data-lucide="rocket" class="w-5.5 h-5.5 text-white" id="main-brand-icon"></i>
             </div>
             <span id="brand-name-text" class="text-xl sm:text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
@@ -114,11 +124,11 @@
         <!-- Indicador Estado Premium -->
         <div class="flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-semibold text-purple-300 tracking-wider uppercase">
             <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500 animate-pulse"></span>
-            <span>En Desarrollo Activo</span>
+            <span>En Vivo Sincronizado</span>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL (Diseño amplio y no comprimido) -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="relative z-10 w-full max-w-5xl mx-auto px-6 py-12 sm:py-20 md:py-28 flex-grow flex flex-col justify-center items-center text-center animate-fade-in-up">
         
         <!-- Badge de lanzamiento -->
@@ -137,29 +147,28 @@
             Estamos perfeccionando cada píxel y detalle de nuestra plataforma web para ofrecerte una experiencia digital incomparable. Estaremos listos muy pronto.
         </p>
 
-        <!-- CONTENEDOR DE CONTENIDO VARIABLE (TEMPORIZADOR O MENSAJE ALTERNATIVO) -->
+        <!-- CONTENEDOR DE CONTENIDO VARIABLE -->
         <div id="interactive-content-area" class="w-full max-w-3xl mx-auto mb-12">
             
             <!-- 1. TEMPORIZADOR DE CUENTA ATRÁS -->
             <div id="countdown-wrapper" class="w-full">
-                <!-- Grid de tarjetas de tiempo: responsive fluido -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-                    <!-- Tarjeta: Días -->
+                    <!-- Días -->
                     <div class="glassmorphism p-5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-1">
                         <span id="days" class="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
                         <span class="text-xs font-semibold tracking-wider text-purple-400 uppercase mt-3">Días</span>
                     </div>
-                    <!-- Tarjeta: Horas -->
+                    <!-- Horas -->
                     <div class="glassmorphism p-5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-1">
                         <span id="hours" class="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
                         <span class="text-xs font-semibold tracking-wider text-purple-400 uppercase mt-3">Horas</span>
                     </div>
-                    <!-- Tarjeta: Minutos -->
+                    <!-- Minutos -->
                     <div class="glassmorphism p-5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-1">
                         <span id="minutes" class="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
                         <span class="text-xs font-semibold tracking-wider text-purple-400 uppercase mt-3">Minutos</span>
                     </div>
-                    <!-- Tarjeta: Segundos -->
+                    <!-- Segundos -->
                     <div class="glassmorphism p-5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-1">
                         <span id="seconds" class="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
                         <span class="text-xs font-semibold tracking-wider text-purple-400 uppercase mt-3">Segundos</span>
@@ -167,7 +176,7 @@
                 </div>
             </div>
 
-            <!-- 2. MENSAJE ALTERNATIVO CUANDO EL TEMPORIZADOR ESTÁ DESACTIVADO -->
+            <!-- 2. MENSAJE ALTERNATIVO (TEMPORIZADOR DESACTIVADO) -->
             <div id="timer-disabled-msg" class="hidden glassmorphism p-8 sm:p-10 rounded-2xl border border-purple-500/15 max-w-xl mx-auto w-full">
                 <div class="flex flex-col items-center gap-4 sm:gap-5">
                     <div class="relative">
@@ -176,9 +185,8 @@
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold text-slate-200 tracking-tight">Preparando algo extraordinario</h3>
                     <p class="text-xs sm:text-sm text-slate-400 max-w-md leading-relaxed">
-                        Nuestro equipo está ultimando los detalles del nuevo ecosistema. Hemos desactivado la cuenta regresiva temporalmente para el despliegue final.
+                        Nuestro equipo está ultimando los detalles de este nuevo ecosistema. Hemos desactivado el contador en vivo de forma temporal.
                     </p>
-                    <!-- Barra de progreso infinita de carga premium -->
                     <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden mt-2 relative">
                         <div class="bg-gradient-to-r from-purple-500 to-blue-500 h-full rounded-full w-2/3 absolute animate-pulse left-[16.6%]"></div>
                     </div>
@@ -193,7 +201,7 @@
                     </div>
                     <h3 class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">¡LANZAMIENTO COMPLETADO!</h3>
                     <p class="text-xs sm:text-sm text-slate-400 max-w-lg leading-relaxed">
-                        ¡Hemos abierto nuestras puertas oficialmente! Si eres el administrador del sitio web, puedes configurar una nueva fecha objetivo desde el panel de control inferior.
+                        ¡Hemos abierto nuestras puertas oficialmente! Si eres el administrador del sitio web, puedes volver a configurar una nueva fecha objetivo desde el panel inferior.
                     </p>
                 </div>
             </div>
@@ -209,7 +217,7 @@
                 &copy; <span id="footer-year">2026</span> <span id="footer-brand-name">Aetheria</span>. Todos los derechos reservados.
             </p>
             
-            <!-- Enlace discreto para ingresar al Panel de Administración -->
+            <!-- Enlace para ingresar al Panel de Administración -->
             <button id="open-login-btn" class="flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-400 hover:underline transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-slate-500/20 px-2 py-1 rounded">
                 <i data-lucide="settings" class="w-3.5 h-3.5"></i>
                 <span>Configuración de Portal</span>
@@ -271,8 +279,8 @@
                     <i data-lucide="sliders" class="w-5.5 h-5.5"></i>
                 </div>
                 <div>
-                    <h3 class="text-base sm:text-lg font-bold">Gestor de Configuración</h3>
-                    <p class="text-xs text-slate-400">Personaliza la interfaz de pre-lanzamiento en vivo.</p>
+                    <h3 class="text-base sm:text-lg font-bold">Gestor Sincronizado</h3>
+                    <p class="text-xs text-slate-400">Actualiza la interfaz de todos los visitantes simultáneamente.</p>
                 </div>
             </div>
 
@@ -287,7 +295,7 @@
                     </div>
                 </div>
 
-                <!-- Seccion 2: Activar/Desactivar Temporizador (Nuevo Requisito) -->
+                <!-- Seccion 2: Activar/Desactivar Temporizador -->
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-purple-400 mb-2">Estado del Temporizador</label>
                     <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/10">
@@ -355,30 +363,35 @@
         </div>
     </div>
 
+    <!-- JAVASCRIPT CON INTEGRACIÓN REAL-TIME CLOUD FIRESTORE -->
+    <script type="module">
+        // Importación de módulos oficiales Firebase v11.6.1
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    <!-- JAVASCRIPT PRINCIPAL -->
-    <script>
         // CONFIGURACIÓN DE ACCESOS Y CONSTANTES
         const PIN_ADMIN = "7134";
-        const STORAGE_KEY = "coming_soon_config_v2"; // Clave actualizada para evitar colisiones
-
-        // CONFIGURACIÓN POR DEFECTO
+        
+        // Configuración por defecto de respaldo
         const default_config = {
             brandName: "Aetheria",
             iconType: "preset", 
             iconValue: "rocket", 
             targetDate: "",
-            showTimer: true // Por defecto el temporizador está activado
+            showTimer: true
         };
 
         // Estado local inicializado
-        let config = {};
+        let config = { ...default_config };
+        let activeUser = null;
 
         // Lista de iconos Lucide recomendados para el selector
         const PRESET_ICONS = ["rocket", "sparkles", "crown", "globe", "activity", "cpu", "flame", "zap", "gem", "layers"];
 
         // VARIABLES GLOBALES DE ELEMENTOS
         const elements = {
+            loadingScreen: document.getElementById('app-loading-screen'),
             brandNameTexts: [document.getElementById('brand-name-text'), document.getElementById('footer-brand-name')],
             brandTitleSpan: document.getElementById('brand-title-span'),
             brandLogoContainer: document.getElementById('brand-logo-container'),
@@ -424,44 +437,102 @@
             toastContainer: document.getElementById('toast-container')
         };
 
+        // INICIALIZACIÓN DE FIREBASE (Configurado por el entorno)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'coming-soon-premium-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "",
+            authDomain: "coming-soon-synced.firebaseapp.com",
+            projectId: "coming-soon-synced",
+            storageBucket: "coming-soon-synced.appspot.com",
+            messagingSenderId: "12345",
+            appId: "1:12345:web:12345"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Referencia estricta para sincronizar públicamente siguiendo la Regla 1
+        const configDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'global');
+
         // INICIALIZADOR PRINCIPAL
-        window.addEventListener('DOMContentLoaded', () => {
-            loadConfig();
-            initCountdown();
+        window.addEventListener('DOMContentLoaded', async () => {
             initYear();
             initPresetIconSelector();
             setupEventListeners();
             
-            // Inicialización de Lucide al cargar
-            lucide.createIcons();
+            // Autenticación inicial segura siguiendo la Regla 3
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Autenticación fallida", error);
+                showToast("error", "Error de conexión", "No se pudo sincronizar en vivo temporalmente.");
+            }
+
+            // Monitorear estado de autenticación antes de consultar
+            onAuthStateChanged(auth, (user) => {
+                activeUser = user;
+                if (user) {
+                    startRealtimeSync();
+                }
+            });
         });
 
-        // 1. CARGA DE CONFIGURACIÓN Y PERSISTENCIA
-        function loadConfig() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                try {
-                    config = JSON.parse(saved);
-                } catch (e) {
-                    config = { ...default_config };
+        // 1. SINCRONIZACIÓN EN TIEMPO REAL DESDE FIRESTORE (REGLA 1 & 3)
+        function startRealtimeSync() {
+            if (!activeUser) return;
+
+            // Escuchador reactivo en tiempo real
+            onSnapshot(configDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    config = docSnap.data();
+                } else {
+                    // Si no hay configuración remota previa, la generamos localmente y la subimos
+                    const futDate = new Date();
+                    futDate.setDate(futDate.getDate() + 30);
+                    config = {
+                        ...default_config,
+                        targetDate: formatDateTimeLocal(futDate)
+                    };
+                    saveConfigRemote(config, false); // Subir silenciosamente
                 }
-            } else {
-                config = { ...default_config };
-            }
+                
+                applyConfig();
+                initCountdown();
+                hideLoadingScreen();
+            }, (error) => {
+                console.error("Error cargando base de datos", error);
+                showToast("error", "Error de lectura", "No tienes permisos o la base de datos se encuentra desconectada.");
+                hideLoadingScreen();
+            });
+        }
 
-            // Si no hay fecha objetivo, establecemos por defecto +30 días en el futuro
-            if (!config.targetDate) {
-                const futDate = new Date();
-                futDate.setDate(futDate.getDate() + 30);
-                config.targetDate = formatDateTimeLocal(futDate);
+        function hideLoadingScreen() {
+            if (elements.loadingScreen) {
+                elements.loadingScreen.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => elements.loadingScreen.remove(), 600);
             }
+        }
 
-            // Soporte para configuraciones antiguas que no tenían el campo de activación de temporizador
-            if (config.showTimer === undefined) {
-                config.showTimer = true;
+        // Guarda configuración remota en la nube
+        async function saveConfigRemote(newConfig, notify = true) {
+            if (!activeUser) {
+                showToast("error", "Error", "No autenticado. Por favor, reintenta.");
+                return;
             }
-
-            applyConfig();
+            try {
+                await setDoc(configDocRef, newConfig, { merge: true });
+                if (notify) {
+                    showToast("success", "Sincronizado", "Los cambios ya están en vivo en todos los dispositivos conectados.");
+                }
+            } catch (e) {
+                console.error("Error al guardar en Firestore:", e);
+                showToast("error", "Sincronización Fallida", "Verifica tu conexión o permisos.");
+            }
         }
 
         // Aplica el estado actual de la configuración al DOM
@@ -501,7 +572,7 @@
             return `${year}-${month}-${day}T${hours}:${minutes}`;
         }
 
-        // Renderizado inteligente del logotipo (Preset o Imagen Personalizada)
+        // Renderizado inteligente del logotipo
         function renderBrandLogo() {
             elements.brandLogoContainer.innerHTML = '';
             
@@ -527,14 +598,6 @@
             lucide.createIcons();
         }
 
-        // Guarda configuración del Panel
-        function saveConfig(newConfig) {
-            config = { ...config, ...newConfig };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-            applyConfig();
-            showToast("success", "Configuración guardada", "La interfaz se actualizó correctamente.");
-        }
-
         // 2. LÓGICA DEL TEMPORIZADOR (Countdown)
         let countdownInterval;
         let confettiInterval; // Control del loop de celebración
@@ -543,7 +606,7 @@
             if (countdownInterval) clearInterval(countdownInterval);
             if (confettiInterval) clearInterval(confettiInterval);
 
-            // Si el temporizador ha sido desactivado explícitamente por el usuario
+            // Si el temporizador ha sido desactivado públicamente
             if (!config.showTimer) {
                 elements.countdownWrapper.classList.add('hidden');
                 elements.launchCompletedMsg.classList.add('hidden');
@@ -597,9 +660,8 @@
             countdownInterval = setInterval(updateTime, 1000);
         }
 
-        // Función de disparo y ciclos de confetti interactivo
+        // Función de ráfagas continuas de confeti para todos los dispositivos
         function triggerConfettiCelebration() {
-            // Disparo inicial gigante
             confetti({
                 particleCount: 160,
                 spread: 80,
@@ -607,10 +669,8 @@
                 colors: ['#a855f7', '#3b82f6', '#ec4899', '#10b981', '#ffffff']
             });
 
-            // Intervalo para ráfagas continuas y elegantes desde los laterales
             if (confettiInterval) clearInterval(confettiInterval);
             confettiInterval = setInterval(() => {
-                // Ráfaga izquierda
                 confetti({
                     particleCount: 40,
                     angle: 60,
@@ -618,7 +678,6 @@
                     origin: { x: 0, y: 0.8 },
                     colors: ['#a855f7', '#3b82f6', '#ec4899']
                 });
-                // Ráfaga derecha
                 confetti({
                     particleCount: 40,
                     angle: 120,
@@ -639,18 +698,15 @@
         // 3. SECTOR DE ACCIONES DE INTERFAZ & EVENTOS
         function setupEventListeners() {
             
-            // Cerrar e ingresar desde el login por PIN
             elements.openLoginBtn.addEventListener('click', () => openModal(elements.pinModal, elements.pinModalContent));
             elements.closePinBtn.addEventListener('click', () => closeModal(elements.pinModal, elements.pinModalContent));
             elements.closeAdminBtn.addEventListener('click', () => closeModal(elements.adminModal, elements.adminModalContent));
 
-            // Prevenir cierre haciendo clic fuera del modal container
             window.addEventListener('click', (e) => {
                 if (e.target === elements.pinModal) closeModal(elements.pinModal, elements.pinModalContent);
                 if (e.target === elements.adminModal) closeModal(elements.adminModal, elements.adminModalContent);
             });
 
-            // Lógica de desvanecimiento suave si se desmarca/marca el temporizador
             elements.inputShowTimer.addEventListener('change', (e) => {
                 if (e.target.checked) {
                     elements.adminDatePickerWrapper.classList.remove('opacity-40', 'pointer-events-none');
@@ -659,7 +715,6 @@
                 }
             });
 
-            // Lógica de salto automático de caracteres en inputs del PIN
             elements.pinInputs.forEach((input, index) => {
                 input.addEventListener('input', (e) => {
                     const value = e.target.value;
@@ -677,7 +732,6 @@
                 });
             });
 
-            // Formulario PIN Submit
             elements.pinForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 let enteredPin = "";
@@ -686,37 +740,30 @@
                 if (enteredPin === PIN_ADMIN) {
                     elements.pinErrorText.classList.add('hidden');
                     closeModal(elements.pinModal, elements.pinModalContent);
-                    
-                    // Limpieza del PIN input
                     elements.pinInputs.forEach(input => input.value = "");
                     
-                    // Abrir Dashboard Admin con suave retraso
                     setTimeout(() => {
                         openModal(elements.adminModal, elements.adminModalContent);
                     }, 350);
                 } else {
                     elements.pinErrorText.classList.remove('hidden');
-                    // Efecto Shake premium en modal PIN
                     elements.pinModalContent.classList.add('animate-shake');
                     setTimeout(() => {
                         elements.pinModalContent.classList.remove('animate-shake');
                     }, 500);
-                    // Reset inputs
                     elements.pinInputs.forEach(input => input.value = "");
                     elements.pinInputs[0].focus();
                 }
             });
 
-            // Cambio de Tabs del Logotipo (Preset vs URL)
             elements.btnIconPreset.addEventListener('click', () => toggleIconTab('preset'));
             elements.btnIconUrl.addEventListener('click', () => toggleIconTab('url'));
 
-            // Envío del Formulario Admin
-            elements.adminConfigForm.addEventListener('submit', (e) => {
+            elements.adminConfigForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const type = elements.btnIconPreset.classList.contains('border-purple-500') ? 'preset' : 'url';
-                let value = "rocket"; // Default fallback
+                let value = "rocket";
 
                 if (type === 'preset') {
                     const selected = document.querySelector('.icon-grid-item.active-icon');
@@ -725,7 +772,8 @@
                     value = elements.inputBrandImgUrl.value.trim() || "rocket";
                 }
 
-                saveConfig({
+                // Guardado en la nube en tiempo real
+                await saveConfigRemote({
                     brandName: elements.inputBrandName.value.trim(),
                     iconType: type,
                     iconValue: value,
@@ -733,20 +781,20 @@
                     showTimer: elements.inputShowTimer.checked
                 });
 
-                // Reiniciar el timer con la nueva fecha y limpiar cualquier intervalo de confeti previo
-                initCountdown();
-
                 closeModal(elements.adminModal, elements.adminModalContent);
             });
 
-            // Resetear Configuración
-            elements.btnResetDefault.addEventListener('click', () => {
-                if (confirm("¿Estás seguro de que deseas restablecer los valores de fábrica?")) {
-                    localStorage.removeItem(STORAGE_KEY);
-                    loadConfig();
-                    initCountdown();
+            elements.btnResetDefault.addEventListener('click', async () => {
+                if (confirm("¿Estás seguro de que deseas restablecer los valores de fábrica en la nube para todos los visitantes?")) {
+                    const futDate = new Date();
+                    futDate.setDate(futDate.getDate() + 30);
+                    
+                    await saveConfigRemote({
+                        ...default_config,
+                        targetDate: formatDateTimeLocal(futDate)
+                    });
+                    
                     closeModal(elements.adminModal, elements.adminModalContent);
-                    showToast("info", "Valores por defecto", "La página se ha restablecido.");
                 }
             });
         }
@@ -771,7 +819,6 @@
             elements.pinErrorText.classList.add('hidden');
         }
 
-        // Alternar vistas de preset/url para iconos
         function toggleIconTab(type) {
             if (type === 'preset') {
                 elements.btnIconPreset.className = "py-2.5 px-4 rounded-xl text-xs font-semibold border border-purple-500 bg-purple-500/10 text-white transition-all";
@@ -786,7 +833,6 @@
             }
         }
 
-        // Selector Dinámico de Iconos Lucide Preset
         function initPresetIconSelector() {
             elements.iconSelectorGrid.innerHTML = '';
             
@@ -812,10 +858,9 @@
             });
         }
 
-        // 5. SISTEMA NOTIFICACIÓN TOASTS EN PANTALLA
+        // 5. TOASTS EN PANTALLA
         function showToast(type, title, description) {
             const toast = document.createElement('div');
-            
             let iconMarkup = "";
             let accentBorder = "";
             
@@ -869,7 +914,6 @@
             }, 300);
         }
 
-        // Inicializar año dinámico
         function initYear() {
             elements.footerYear.textContent = new Date().getFullYear();
         }
