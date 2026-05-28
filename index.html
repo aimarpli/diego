@@ -1,227 +1,796 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción | Próximamente</title>
+    <title>Próximamente | En Construcción</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Orbitron para el contador -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Canvas Confetti CDN para animación premium de éxito -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
-        
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; overflow-x: hidden; }
-        @keyframes float-slow { 0%, 100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-30px) scale(1.1); } }
-        @keyframes float-medium { 0%, 100% { transform: translateY(0px) translateX(0px); } 50% { transform: translateY(20px) translateX(-15px); } }
-        @keyframes pulse-glow { 0%, 100% { opacity: 0.3; filter: blur(80px); } 50% { opacity: 0.6; filter: blur(100px); } }
-        .glow-orb-1 { animation: float-slow 15s ease-in-out infinite, pulse-glow 8s ease-in-out infinite; }
-        .glow-orb-2 { animation: float-medium 18s ease-in-out infinite, pulse-glow 10s ease-in-out infinite; }
-        .bg-grid-pattern { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px); }
-        .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.07); }
-        .glow-button { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glow-button:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); transform: translateY(-1px); }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.3); }
-        ::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 3px; }
-    </style>
-</head>
-<body class="min-h-screen text-slate-100 flex flex-col justify-between relative bg-grid-pattern selection:bg-blue-600 selection:text-white">
 
-    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="glow-orb-1 absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-600/20 blur-[80px]"></div>
-        <div class="glow-orb-2 absolute top-[30%] right-[-5%] w-[45vw] h-[45vw] rounded-full bg-cyan-500/15 blur-[90px]"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950"></div>
-    </div>
-
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center relative z-10">
-        <div class="flex items-center gap-3">
-            <div class="relative flex items-center justify-center">
-                <div id="header-icon-glow" class="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-400 blur-sm opacity-70 animate-pulse"></div>
-                <div id="header-icon-container" class="relative bg-slate-900 border border-white/10 p-2.5 rounded-xl text-blue-400">
-                    <i id="header-icon" data-lucide="layers" class="w-6 h-6"></i>
-                </div>
-            </div>
-            <div>
-                <span id="header-brand-name" class="text-xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">NEXUS</span>
-            </div>
-        </div>
-        <div>
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel text-xs font-medium text-blue-300 border border-blue-500/20">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                Lanzamiento Próximo
-            </span>
-        </div>
-    </header>
-
-    <main class="w-full max-w-4xl mx-auto px-6 py-12 flex flex-col items-center justify-center text-center relative z-10 my-auto">
-        <div class="mb-6 flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-sm text-slate-300">
-            <i data-lucide="hammer" class="w-4 h-4 text-blue-400 animate-bounce"></i>
-            <span>Plataforma en fase final de desarrollo</span>
-        </div>
-        <h1 id="main-title" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-            Algo increíble está <br>
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500">en construcción</span>
-        </h1>
-        <p class="text-slate-400 text-base sm:text-xl max-w-2xl mb-12 font-light leading-relaxed">
-            Estamos afinando los últimos detalles para ofrecerte una experiencia digital sin precedentes.
-        </p>
-        <div id="countdown-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl w-full mb-12">
-            <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center relative overflow-hidden group">
-                <span id="days" class="text-3xl font-extrabold text-white mb-1">00</span>
-                <span class="text-xs uppercase text-slate-400">Días</span>
-            </div>
-            <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center relative overflow-hidden group">
-                <span id="hours" class="text-3xl font-extrabold text-white mb-1">00</span>
-                <span class="text-xs uppercase text-slate-400">Horas</span>
-            </div>
-            <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center relative overflow-hidden group">
-                <span id="minutes" class="text-3xl font-extrabold text-white mb-1">00</span>
-                <span class="text-xs uppercase text-slate-400">Minutos</span>
-            </div>
-            <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center relative overflow-hidden group">
-                <span id="seconds" class="text-3xl font-extrabold text-blue-400 mb-1">00</span>
-                <span class="text-xs uppercase text-slate-400">Segundos</span>
-            </div>
-        </div>
-    </main>
-
-    <footer class="w-full mx-auto px-6 py-8 flex justify-center items-center relative z-10 border-t border-white/[0.04]">
-        <button onclick="openPinModal()" class="text-xs text-slate-500 hover:text-blue-400 flex items-center gap-1.5 transition-colors focus:outline-none select-none">
-            <span id="footer-copyright-text">© 2026 NEXUS. Todos los derechos reservados.</span>
-            <i data-lucide="lock" class="w-3.5 h-3.5 opacity-30 hover:opacity-100"></i>
-        </button>
-    </footer>
-
-    <!-- MODAL PIN -->
-    <div id="pin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-sm glass-panel rounded-3xl p-6 relative shadow-2xl border border-blue-500/20">
-            <button onclick="closePinModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="text-center mb-6">
-                <h3 class="text-lg font-bold">Acceso de Administrador</h3>
-            </div>
-            <div class="flex justify-center gap-3 mb-6">
-                <div id="pin-dot-1" class="w-4 h-4 rounded-full border border-slate-600"></div>
-                <div id="pin-dot-2" class="w-4 h-4 rounded-full border border-slate-600"></div>
-                <div id="pin-dot-3" class="w-4 h-4 rounded-full border border-slate-600"></div>
-                <div id="pin-dot-4" class="w-4 h-4 rounded-full border border-slate-600"></div>
-            </div>
-            <div class="grid grid-cols-3 gap-3">
-                <button onclick="pressPin('1')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">1</button>
-                <button onclick="pressPin('2')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">2</button>
-                <button onclick="pressPin('3')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">3</button>
-                <button onclick="pressPin('4')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">4</button>
-                <button onclick="pressPin('5')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">5</button>
-                <button onclick="pressPin('6')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">6</button>
-                <button onclick="pressPin('7')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">7</button>
-                <button onclick="pressPin('8')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">8</button>
-                <button onclick="pressPin('9')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">9</button>
-                <button onclick="clearPin()" class="py-3 rounded-2xl bg-rose-500/10 text-rose-400 text-xs">Limpiar</button>
-                <button onclick="pressPin('0')" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10 font-bold">0</button>
-                <button onclick="deleteLastPinDigit()" class="py-3 rounded-2xl bg-white/5 hover:bg-white/10"><i data-lucide="delete" class="w-5 h-5 mx-auto"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PANEL ADMIN -->
-    <div id="admin-panel-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="w-full max-w-2xl glass-panel rounded-3xl p-6 md:p-8 shadow-2xl border border-blue-500/20 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                <h2 class="text-xl font-extrabold">Panel de Control</h2>
-                <button onclick="closeAdminPanel()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div class="flex flex-col gap-4">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Nombre de Marca</label>
-                    <input id="input-brand-name" type="text" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-sm focus:border-blue-500 outline-none">
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Icono (Selección o URL)</label>
-                    <select id="select-brand-icon" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-sm mb-2 focus:border-blue-500 outline-none">
-                        <option value="layers">Capas (Defecto)</option>
-                        <option value="rocket">Cohete</option>
-                        <option value="hammer">Martillo</option>
-                        <option value="terminal">Terminal</option>
-                        <option value="none">Sin Icono</option>
-                    </select>
-                    <input id="input-custom-icon-url" type="url" placeholder="O pega una URL de imagen aquí..." class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-sm focus:border-blue-500 outline-none">
-                </div>
-                <button onclick="applyChanges()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl mt-4">Guardar Cambios</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Configuración personalizada de Tailwind -->
     <script>
-        lucide.createIcons();
-        let brandName = localStorage.getItem("nexus_brand_name") || "NEXUS";
-        let mainTitleHTML = localStorage.getItem("nexus_main_title") || `Algo increíble está <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500">en construcción</span>`;
-        let headerIconName = localStorage.getItem("nexus_header_icon") || "layers";
-        let customIconUrl = localStorage.getItem("nexus_custom_icon_url") || "";
-        let enteredPin = "";
-        const PIN_XOR_SEQUENCE = [29, 27, 25, 30];
-
-        function syncAllBrandTexts() {
-            document.getElementById("header-brand-name").innerText = brandName;
-            document.getElementById("footer-copyright-text").innerText = `© 2026 ${brandName}. Todos los derechos reservados.`;
-        }
-
-        function applyHeaderIcon(iconName, customUrl) {
-            const iconContainer = document.getElementById("header-icon-container");
-            const iconGlow = document.getElementById("header-icon-glow");
-            
-            if (customUrl && customUrl.trim() !== "") {
-                iconContainer.innerHTML = `<img src="${customUrl}" class="w-6 h-6 object-contain" />`;
-                iconGlow.classList.remove("hidden");
-            } else if (iconName === "none") {
-                iconContainer.classList.add("hidden");
-                iconGlow.classList.add("hidden");
-            } else {
-                iconContainer.innerHTML = `<i id="header-icon" data-lucide="${iconName}" class="w-6 h-6"></i>`;
-                iconContainer.classList.remove("hidden");
-                iconGlow.classList.remove("hidden");
-                lucide.createIcons();
-            }
-        }
-
-        // Inicialización
-        syncAllBrandTexts();
-        applyHeaderIcon(headerIconName, customIconUrl);
-
-        function openPinModal() { document.getElementById("pin-modal").classList.remove("hidden"); setTimeout(() => document.getElementById("pin-modal").classList.add("opacity-100"), 50); }
-        function closePinModal() { document.getElementById("pin-modal").classList.remove("opacity-100"); setTimeout(() => document.getElementById("pin-modal").classList.add("hidden"), 300); }
-        
-        function pressPin(num) {
-            if (enteredPin.length < 4) {
-                enteredPin += num;
-                if (enteredPin.length === 4) {
-                    const isValid = enteredPin.split('').every((char, i) => (char.charCodeAt(0) ^ 42) === PIN_XOR_SEQUENCE[i]);
-                    if (isValid) { closePinModal(); openAdminPanel(); } else { enteredPin = ""; }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Orbitron', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 12s infinite',
+                        'shake': 'shake 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(20px, -40px) scale(1.1)' },
+                            '66%': { transform: 'translate(-15px, 15px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shake: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+                            '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
+                        }
+                    }
                 }
             }
         }
-        function clearPin() { enteredPin = ""; }
-        function deleteLastPinDigit() { enteredPin = enteredPin.slice(0, -1); }
-        
-        function openAdminPanel() {
-            document.getElementById("input-brand-name").value = brandName;
-            document.getElementById("select-brand-icon").value = headerIconName;
-            document.getElementById("input-custom-icon-url").value = customIconUrl;
-            document.getElementById("admin-panel-modal").classList.remove("hidden");
-            setTimeout(() => document.getElementById("admin-panel-modal").classList.add("opacity-100"), 50);
-        }
-        function closeAdminPanel() { document.getElementById("admin-panel-modal").classList.remove("opacity-100"); setTimeout(() => document.getElementById("admin-panel-modal").classList.add("hidden"), 300); }
+    </script>
 
-        function applyChanges() {
-            brandName = document.getElementById("input-brand-name").value.trim() || "NEXUS";
-            headerIconName = document.getElementById("select-brand-icon").value;
-            customIconUrl = document.getElementById("input-custom-icon-url").value.trim();
+    <style>
+        /* Estilos CSS adicionales para efectos avanzados de Glassmorphism */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+        /* Ocultar barra de desplazamiento manteniendo la funcionalidad de scroll */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 85, 247, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 85, 247, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-100 font-sans min-h-screen relative flex flex-col justify-between overflow-x-hidden selection:bg-purple-500/30 selection:text-purple-200">
+
+    <!-- ORBS DECORATIVOS DIFUSOS (Fondo Dinámico) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <!-- Orb 1 (Púrpura) -->
+        <div class="absolute top-[-10%] left-[-10%] md:top-[-20%] md:left-[-20%] w-[50vw] h-[50vw] min-w-[300px] min-h-[300px] rounded-full bg-purple-600/15 blur-[60px] md:blur-[120px] animate-blob z-0"></div>
+        <!-- Orb 2 (Azul) -->
+        <div class="absolute bottom-[10%] right-[-10%] md:bottom-[-10%] md:right-[-10%] w-[45vw] h-[45vw] min-w-[280px] min-h-[280px] rounded-full bg-blue-600/15 blur-[60px] md:blur-[120px] animate-blob [animation-delay:4s] z-0"></div>
+        <!-- Orb 3 (Rosa suave en centro) -->
+        <div class="absolute top-[35%] left-[25%] w-[35vw] h-[35vw] min-w-[220px] min-h-[220px] rounded-full bg-pink-600/10 blur-[70px] md:blur-[140px] animate-blob [animation-delay:8s] z-0"></div>
+    </div>
+
+    <!-- NOTIFICACIONES (TOASTS) PERSONALIZADOS -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full px-4"></div>
+
+    <!-- HEADER -->
+    <header class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between">
+        <!-- Contenedor Logo + Marca editable -->
+        <div class="flex items-center gap-2.5 sm:gap-3 group">
+            <div id="brand-logo-container" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/25 transition-transform duration-300 group-hover:scale-110">
+                <!-- Se inyecta icono Lucide o imagen por JS -->
+                <i data-lucide="rocket" class="w-5 h-5 text-white" id="main-brand-icon"></i>
+            </div>
+            <span id="brand-name-text" class="text-lg sm:text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
+                Aetheria
+            </span>
+        </div>
+
+        <!-- Indicador Estado Premium -->
+        <div class="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-semibold text-purple-300 tracking-wider uppercase">
+            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500 animate-pulse"></span>
+            <span>En Desarrollo Activo</span>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL (Centrado y Fluido en cualquier dispositivo) -->
+    <main class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8 flex-grow flex flex-col justify-center items-center text-center">
+        
+        <!-- Badge de lanzamiento -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 text-xs font-medium text-purple-200 mb-6 sm:mb-8 backdrop-blur-sm animate-pulse-slow">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-purple-400"></i>
+            <span class="tracking-wide uppercase text-[10px] sm:text-xs">NUEVO LANZAMIENTO PRÓXIMAMENTE</span>
+        </div>
+
+        <!-- Título Principal Fluido y Escalable -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] mb-5 sm:mb-6 max-w-3xl">
+            Diseñando la próxima generación de <span id="brand-title-span" class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-glow">Aetheria</span>
+        </h1>
+
+        <!-- Subtítulo Adaptativo -->
+        <p class="text-sm sm:text-base md:text-lg text-slate-400 font-light max-w-2xl mb-8 sm:mb-12 leading-relaxed px-2">
+            Estamos perfeccionando cada píxel y detalle de nuestra plataforma web para ofrecerte una experiencia digital incomparable. Estaremos listos muy pronto.
+        </p>
+
+        <!-- TEMPORIZADOR DE CUENTA ATRÁS -->
+        <div id="countdown-wrapper" class="w-full max-w-2xl mx-auto mb-10">
+            <!-- Grid de tarjetas de tiempo: responsive fluido para pantallas pequeñas -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                <!-- Tarjeta: Días -->
+                <div class="glassmorphism p-4 sm:p-5 md:p-6 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                    <span id="days" class="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
+                    <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-purple-400 uppercase mt-2">Días</span>
+                </div>
+                <!-- Tarjeta: Horas -->
+                <div class="glassmorphism p-4 sm:p-5 md:p-6 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                    <span id="hours" class="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
+                    <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-purple-400 uppercase mt-2">Horas</span>
+                </div>
+                <!-- Tarjeta: Minutos -->
+                <div class="glassmorphism p-4 sm:p-5 md:p-6 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                    <span id="minutes" class="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
+                    <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-purple-400 uppercase mt-2">Minutos</span>
+                </div>
+                <!-- Tarjeta: Segundos -->
+                <div class="glassmorphism p-4 sm:p-5 md:p-6 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                    <span id="seconds" class="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-none">00</span>
+                    <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-purple-400 uppercase mt-2">Segundos</span>
+                </div>
+            </div>
+
+            <!-- Mensaje Alternativo de Lanzamiento Terminado con Confeti de fondo -->
+            <div id="launch-completed-msg" class="hidden glassmorphism p-6 sm:p-8 rounded-2xl border border-emerald-500/20 bg-emerald-950/5">
+                <div class="flex flex-col items-center gap-2 sm:gap-3">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-1 sm:mb-2">
+                        <i data-lucide="party-popper" class="w-7 h-7 sm:w-8 sm:h-8"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-400 tracking-tight">¡LANZAMIENTO COMPLETADO!</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 max-w-lg leading-relaxed">
+                        ¡Hemos abierto nuestras puertas oficialmente! Si eres el administrador del sitio web, puedes volver a configurar una nueva fecha objetivo desde el panel de control inferior.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 border-t border-white/5 mt-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p class="text-[11px] sm:text-xs text-slate-500">
+                &copy; <span id="footer-year">2026</span> <span id="footer-brand-name">Aetheria</span>. Todos los derechos reservados.
+            </p>
             
-            localStorage.setItem("nexus_brand_name", brandName);
-            localStorage.setItem("nexus_header_icon", headerIconName);
-            localStorage.setItem("nexus_custom_icon_url", customIconUrl);
+            <!-- Enlace discreto para ingresar al Panel de Administración -->
+            <button id="open-login-btn" class="flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-600 hover:text-slate-400 hover:underline transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-slate-500/20 px-2 py-1 rounded">
+                <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+                <span>Configuración de Portal</span>
+            </button>
+        </div>
+    </footer>
+
+
+    <!-- MODAL 1: AUTENTICACIÓN POR PIN -->
+    <div id="pin-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="glassmorphism w-full max-w-md p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto" id="pin-modal-content">
+            <!-- Botón Cerrar -->
+            <button id="close-pin-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 p-1.5 rounded-lg hover:bg-white/5 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Encabezado Modal -->
+            <div class="flex flex-col items-center text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-purple-600/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-3">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold tracking-tight">Control de Propietario</h3>
+                <p class="text-xs text-slate-400 mt-1">Inserta el código de seguridad para abrir el gestor.</p>
+            </div>
+
+            <!-- PIN Form -->
+            <form id="pin-form" class="space-y-4">
+                <div class="flex justify-center gap-2" id="pin-inputs-container">
+                    <!-- 4 Cajas de código individuales -->
+                    <input type="password" maxlength="1" pattern="[0-9]*" inputmode="numeric" class="pin-box w-11 h-12 sm:w-12 sm:h-14 text-center text-2xl font-mono font-bold bg-white/5 border border-white/10 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-xl outline-none transition-all duration-200 text-white">
+                    <input type="password" maxlength="1" pattern="[0-9]*" inputmode="numeric" class="pin-box w-11 h-12 sm:w-12 sm:h-14 text-center text-2xl font-mono font-bold bg-white/5 border border-white/10 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-xl outline-none transition-all duration-200 text-white">
+                    <input type="password" maxlength="1" pattern="[0-9]*" inputmode="numeric" class="pin-box w-11 h-12 sm:w-12 sm:h-14 text-center text-2xl font-mono font-bold bg-white/5 border border-white/10 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-xl outline-none transition-all duration-200 text-white">
+                    <input type="password" maxlength="1" pattern="[0-9]*" inputmode="numeric" class="pin-box w-11 h-12 sm:w-12 sm:h-14 text-center text-2xl font-mono font-bold bg-white/5 border border-white/10 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-xl outline-none transition-all duration-200 text-white">
+                </div>
+                <!-- Mensaje de Error dentro del Modal -->
+                <p id="pin-error-text" class="text-xs text-rose-400 text-center hidden min-h-[16px]">Código incorrecto. Inténtalo de nuevo.</p>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-semibold text-sm transition-all duration-300">
+                        Validar Acceso
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MODAL 2: PANEL DE ADMINISTRACIÓN -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div class="glassmorphism w-full max-w-lg p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto" id="admin-modal-content">
+            <!-- Botón Cerrar -->
+            <button id="close-admin-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 p-1.5 rounded-lg hover:bg-white/5 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Encabezado -->
+            <div class="flex items-center gap-3 border-b border-white/10 pb-4 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-purple-600/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                    <i data-lucide="sliders" class="w-5.5 h-5.5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold">Gestor de Configuración</h3>
+                    <p class="text-xs text-slate-400">Personaliza la interfaz de pre-lanzamiento en vivo.</p>
+                </div>
+            </div>
+
+            <!-- Formulario Principal -->
+            <form id="admin-config-form" class="space-y-5">
+                <!-- Seccion 1: Nombre de la Marca -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-purple-400 mb-2">Nombre de la Marca</label>
+                    <div class="relative">
+                        <i data-lucide="baseline" class="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4.5 h-4.5 text-slate-400"></i>
+                        <input type="text" id="input-brand-name" required class="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-slate-200 text-sm">
+                    </div>
+                </div>
+
+                <!-- Seccion 2: Icono de Marca (Preset u URL) -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-purple-400 mb-2">Tipo de Logotipo</label>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <button type="button" id="btn-icon-preset" class="py-2.5 px-4 rounded-xl text-xs font-semibold border border-purple-500 bg-purple-500/10 text-white transition-all">
+                            Icono del Sistema
+                        </button>
+                        <button type="button" id="btn-icon-url" class="py-2.5 px-4 rounded-xl text-xs font-semibold border border-white/10 bg-white/5 text-slate-400 hover:text-white transition-all">
+                            URL de Imagen
+                        </button>
+                    </div>
+
+                    <!-- Input Condicional: Preset -->
+                    <div id="wrapper-icon-preset" class="space-y-2">
+                        <label class="block text-xs text-slate-400">Selecciona un icono predefinido:</label>
+                        <div class="grid grid-cols-5 gap-2" id="icon-selector-grid">
+                            <!-- Inyectado mediante JS dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Input Condicional: URL -->
+                    <div id="wrapper-icon-url" class="space-y-2 hidden">
+                        <label class="block text-xs text-slate-400">Dirección URL de la Imagen:</label>
+                        <div class="relative">
+                            <i data-lucide="link" class="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4.5 h-4.5 text-slate-400"></i>
+                            <input type="url" id="input-brand-img-url" placeholder="https://ejemplo.com/mi-logo.svg" class="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-slate-200 text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seccion 3: Fecha del Lanzamiento -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-purple-400 mb-2">Fecha y Hora de Lanzamiento</label>
+                    <div class="relative">
+                        <i data-lucide="calendar-clock" class="absolute left-3.5 top-1/2 transform -translate-y-1/2 w-4.5 h-4.5 text-slate-400"></i>
+                        <input type="datetime-local" id="input-target-date" required class="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 text-slate-200 text-sm [color-scheme:dark]">
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-1.5">Establece cuándo deseas que el temporizador finalice.</p>
+                </div>
+
+                <!-- Botones Acciones -->
+                <div class="flex gap-3 border-t border-white/10 pt-4 mt-6">
+                    <button type="button" id="btn-reset-default" class="px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-slate-400 hover:text-white transition-all">
+                        Resetear
+                    </button>
+                    <button type="submit" class="flex-grow py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-bold text-sm transition-all duration-300 shadow-lg shadow-purple-500/10">
+                        Guardar Configuración
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT PRINCIPAL -->
+    <script>
+        // CONFIGURACIÓN DE ACCESOS Y CONSTANTES
+        const PIN_ADMIN = "7134";
+        const STORAGE_KEY = "coming_soon_config_v1";
+
+        // CONFIGURACIÓN POR DEFECTO
+        const default_config = {
+            brandName: "Aetheria",
+            iconType: "preset", 
+            iconValue: "rocket", 
+            targetDate: "" 
+        };
+
+        // Estado local inicializado
+        let config = {};
+
+        // Lista de iconos Lucide recomendados para el selector
+        const PRESET_ICONS = ["rocket", "sparkles", "crown", "globe", "activity", "cpu", "flame", "zap", "gem", "layers"];
+
+        // VARIABLES GLOBALES DE ELEMENTOS
+        const elements = {
+            brandNameTexts: [document.getElementById('brand-name-text'), document.getElementById('footer-brand-name')],
+            brandTitleSpan: document.getElementById('brand-title-span'),
+            brandLogoContainer: document.getElementById('brand-logo-container'),
+            footerYear: document.getElementById('footer-year'),
             
-            syncAllBrandTexts();
-            applyHeaderIcon(headerIconName, customIconUrl);
-            closeAdminPanel();
+            // Countdown
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds'),
+            countdownWrapper: document.getElementById('countdown-wrapper'),
+            launchCompletedMsg: document.getElementById('launch-completed-msg'),
+
+            // Modales
+            openLoginBtn: document.getElementById('open-login-btn'),
+            pinModal: document.getElementById('pin-modal'),
+            pinModalContent: document.getElementById('pin-modal-content'),
+            closePinBtn: document.getElementById('close-pin-btn'),
+            pinForm: document.getElementById('pin-form'),
+            pinInputs: document.querySelectorAll('.pin-box'),
+            pinErrorText: document.getElementById('pin-error-text'),
+
+            adminModal: document.getElementById('admin-modal'),
+            adminModalContent: document.getElementById('admin-modal-content'),
+            closeAdminBtn: document.getElementById('close-admin-btn'),
+            adminConfigForm: document.getElementById('admin-config-form'),
+
+            // Form Inputs
+            inputBrandName: document.getElementById('input-brand-name'),
+            inputBrandImgUrl: document.getElementById('input-brand-img-url'),
+            inputTargetDate: document.getElementById('input-target-date'),
+            btnIconPreset: document.getElementById('btn-icon-preset'),
+            btnIconUrl: document.getElementById('btn-icon-url'),
+            wrapperIconPreset: document.getElementById('wrapper-icon-preset'),
+            wrapperIconUrl: document.getElementById('wrapper-icon-url'),
+            iconSelectorGrid: document.getElementById('icon-selector-grid'),
+            btnResetDefault: document.getElementById('btn-reset-default'),
+
+            // Notificación
+            toastContainer: document.getElementById('toast-container')
+        };
+
+        // INICIALIZADOR PRINCIPAL
+        window.addEventListener('DOMContentLoaded', () => {
+            loadConfig();
+            initCountdown();
+            initYear();
+            initPresetIconSelector();
+            setupEventListeners();
+            
+            // Inicialización de Lucide al cargar
+            lucide.createIcons();
+        });
+
+        // 1. CARGA DE CONFIGURACIÓN Y PERSISTENCIA
+        function loadConfig() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    config = JSON.parse(saved);
+                } catch (e) {
+                    config = { ...default_config };
+                }
+            } else {
+                config = { ...default_config };
+            }
+
+            // Si no hay fecha objetivo, establecemos por defecto +30 días en el futuro
+            if (!config.targetDate) {
+                const futDate = new Date();
+                futDate.setDate(futDate.getDate() + 30);
+                config.targetDate = formatDateTimeLocal(futDate);
+            }
+
+            applyConfig();
+        }
+
+        // Aplica el estado actual al DOM
+        function applyConfig() {
+            // Nombre de marca
+            elements.brandNameTexts.forEach(el => el.textContent = config.brandName);
+            if (elements.brandTitleSpan) {
+                elements.brandTitleSpan.textContent = config.brandName;
+            }
+
+            // Renderizado de logotipo
+            renderBrandLogo();
+
+            // Sincronizar inputs en el Panel Admin
+            elements.inputBrandName.value = config.brandName;
+            elements.inputTargetDate.value = config.targetDate;
+            elements.inputBrandImgUrl.value = config.iconType === 'url' ? config.iconValue : '';
+            
+            toggleIconTab(config.iconType);
+        }
+
+        // Convierte objeto Date a formato 'YYYY-MM-DDTHH:MM'
+        function formatDateTimeLocal(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        // Renderizado inteligente del logotipo
+        function renderBrandLogo() {
+            elements.brandLogoContainer.innerHTML = '';
+            
+            if (config.iconType === 'preset') {
+                const icon = document.createElement('i');
+                icon.setAttribute('data-lucide', config.iconValue);
+                icon.className = "w-5 h-5 sm:w-5.5 sm:h-5.5 text-white";
+                elements.brandLogoContainer.appendChild(icon);
+            } else {
+                const img = document.createElement('img');
+                img.src = config.iconValue;
+                img.alt = "Logo " + config.brandName;
+                img.className = "w-full h-full object-cover rounded-xl p-1";
+                img.onerror = function() {
+                    this.onerror = null;
+                    elements.brandLogoContainer.innerHTML = '<i data-lucide="rocket" class="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white"></i>';
+                    lucide.createIcons();
+                };
+                elements.brandLogoContainer.appendChild(img);
+            }
+
+            // Volver a vincular Lucide
+            lucide.createIcons();
+        }
+
+        // Guarda configuración del Panel
+        function saveConfig(newConfig) {
+            config = { ...config, ...newConfig };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+            applyConfig();
+            showToast("success", "Configuración guardada", "La interfaz se actualizó correctamente.");
+        }
+
+        // 2. LÓGICA DEL TEMPORIZADOR (Countdown)
+        let countdownInterval;
+        let confettiInterval; // Control del loop de celebración
+
+        function initCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            if (confettiInterval) clearInterval(confettiInterval);
+
+            function updateTime() {
+                const targetTime = new Date(config.targetDate).getTime();
+                const now = new Date().getTime();
+                const distance = targetTime - now;
+
+                if (isNaN(targetTime)) {
+                    showTimerValue("00", "00", "00", "00");
+                    return;
+                }
+
+                if (distance < 0) {
+                    // Lanzamiento Finalizado
+                    clearInterval(countdownInterval);
+                    elements.days.parentNode.parentNode.classList.add('hidden');
+                    elements.launchCompletedMsg.classList.remove('hidden');
+                    
+                    // Disparar confeti premium
+                    triggerConfettiCelebration();
+                    return;
+                }
+
+                // Asegurar que se muestre el grid del temporizador
+                elements.days.parentNode.parentNode.classList.remove('hidden');
+                elements.launchCompletedMsg.classList.add('hidden');
+
+                // Cálculos de unidades
+                const daysVal = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hoursVal = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutesVal = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsVal = Math.floor((distance % (1000 * 60)) / 1000);
+
+                showTimerValue(
+                    String(daysVal).padStart(2, '0'),
+                    String(hoursVal).padStart(2, '0'),
+                    String(minutesVal).padStart(2, '0'),
+                    String(secondsVal).padStart(2, '0')
+                );
+            }
+
+            updateTime();
+            countdownInterval = setInterval(updateTime, 1000);
+        }
+
+        // Función de disparo y ciclos de confetti interactivo
+        function triggerConfettiCelebration() {
+            // Disparo inicial gigante
+            confetti({
+                particleCount: 160,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#a855f7', '#3b82f6', '#ec4899', '#10b981', '#ffffff']
+            });
+
+            // Intervalo para ráfagas continuas y elegantes desde los laterales
+            if (confettiInterval) clearInterval(confettiInterval);
+            confettiInterval = setInterval(() => {
+                // Ráfaga izquierda
+                confetti({
+                    particleCount: 40,
+                    angle: 60,
+                    spread: 60,
+                    origin: { x: 0, y: 0.8 },
+                    colors: ['#a855f7', '#3b82f6', '#ec4899']
+                });
+                // Ráfaga derecha
+                confetti({
+                    particleCount: 40,
+                    angle: 120,
+                    spread: 60,
+                    origin: { x: 1, y: 0.8 },
+                    colors: ['#a855f7', '#3b82f6', '#ec4899']
+                });
+            }, 3500);
+        }
+
+        function showTimerValue(d, h, m, s) {
+            elements.days.textContent = d;
+            elements.hours.textContent = h;
+            elements.minutes.textContent = m;
+            elements.seconds.textContent = s;
+        }
+
+        // 3. SECTOR DE ACCIONES DE INTERFAZ & EVENTOS
+        function setupEventListeners() {
+            
+            // Cerrar e ingresar desde el login por PIN
+            elements.openLoginBtn.addEventListener('click', () => openModal(elements.pinModal, elements.pinModalContent));
+            elements.closePinBtn.addEventListener('click', () => closeModal(elements.pinModal, elements.pinModalContent));
+            elements.closeAdminBtn.addEventListener('click', () => closeModal(elements.adminModal, elements.adminModalContent));
+
+            // Prevenir cierre haciendo clic fuera del modal container
+            window.addEventListener('click', (e) => {
+                if (e.target === elements.pinModal) closeModal(elements.pinModal, elements.pinModalContent);
+                if (e.target === elements.adminModal) closeModal(elements.adminModal, elements.adminModalContent);
+            });
+
+            // Lógica de salto automático de caracteres en inputs del PIN
+            elements.pinInputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    if (value.length >= 1) {
+                        if (index < elements.pinInputs.length - 1) {
+                            elements.pinInputs[index + 1].focus();
+                        }
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !input.value && index > 0) {
+                        elements.pinInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Formulario PIN Submit
+            elements.pinForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let enteredPin = "";
+                elements.pinInputs.forEach(input => enteredPin += input.value);
+
+                if (enteredPin === PIN_ADMIN) {
+                    elements.pinErrorText.classList.add('hidden');
+                    closeModal(elements.pinModal, elements.pinModalContent);
+                    
+                    // Limpieza del PIN input
+                    elements.pinInputs.forEach(input => input.value = "");
+                    
+                    // Abrir Dashboard Admin con suave retraso
+                    setTimeout(() => {
+                        openModal(elements.adminModal, elements.adminModalContent);
+                    }, 350);
+                } else {
+                    elements.pinErrorText.classList.remove('hidden');
+                    // Efecto Shake premium en modal PIN
+                    elements.pinModalContent.classList.add('animate-shake');
+                    setTimeout(() => {
+                        elements.pinModalContent.classList.remove('animate-shake');
+                    }, 500);
+                    // Reset inputs
+                    elements.pinInputs.forEach(input => input.value = "");
+                    elements.pinInputs[0].focus();
+                }
+            });
+
+            // Cambio de Tabs del Logotipo (Preset vs URL)
+            elements.btnIconPreset.addEventListener('click', () => toggleIconTab('preset'));
+            elements.btnIconUrl.addEventListener('click', () => toggleIconTab('url'));
+
+            // Envío del Formulario Admin
+            elements.adminConfigForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const type = elements.btnIconPreset.classList.contains('border-purple-500') ? 'preset' : 'url';
+                let value = "rocket"; // Default fallback
+
+                if (type === 'preset') {
+                    const selected = document.querySelector('.icon-grid-item.active-icon');
+                    value = selected ? selected.getAttribute('data-icon') : "rocket";
+                } else {
+                    value = elements.inputBrandImgUrl.value.trim() || "rocket";
+                }
+
+                saveConfig({
+                    brandName: elements.inputBrandName.value.trim(),
+                    iconType: type,
+                    iconValue: value,
+                    targetDate: elements.inputTargetDate.value
+                });
+
+                // Reiniciar el timer con la nueva fecha y limpiar cualquier intervalo de confeti previo
+                initCountdown();
+
+                closeModal(elements.adminModal, elements.adminModalContent);
+            });
+
+            // Resetear Configuración
+            elements.btnResetDefault.addEventListener('click', () => {
+                if (confirm("¿Estás seguro de que deseas restablecer los valores de fábrica?")) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    loadConfig();
+                    initCountdown();
+                    closeModal(elements.adminModal, elements.adminModalContent);
+                    showToast("info", "Valores por defecto", "La página se ha restablecido.");
+                }
+            });
+        }
+
+        // 4. ANIMACIONES Y CONTROL DE MODALES
+        function openModal(modal, content) {
+            modal.classList.remove('pointer-events-none');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+            
+            if (modal === elements.pinModal) {
+                setTimeout(() => elements.pinInputs[0].focus(), 150);
+            }
+        }
+
+        function closeModal(modal, content) {
+            modal.classList.add('pointer-events-none');
+            modal.classList.remove('opacity-100');
+            content.classList.add('scale-95');
+            content.classList.remove('scale-100');
+            elements.pinErrorText.classList.add('hidden');
+        }
+
+        // Alternar vistas de preset/url para iconos
+        function toggleIconTab(type) {
+            if (type === 'preset') {
+                elements.btnIconPreset.className = "py-2.5 px-4 rounded-xl text-xs font-semibold border border-purple-500 bg-purple-500/10 text-white transition-all";
+                elements.btnIconUrl.className = "py-2.5 px-4 rounded-xl text-xs font-semibold border border-white/10 bg-white/5 text-slate-400 hover:text-white transition-all";
+                elements.wrapperIconPreset.classList.remove('hidden');
+                elements.wrapperIconUrl.classList.add('hidden');
+            } else {
+                elements.btnIconUrl.className = "py-2.5 px-4 rounded-xl text-xs font-semibold border border-purple-500 bg-purple-500/10 text-white transition-all";
+                elements.btnIconPreset.className = "py-2.5 px-4 rounded-xl text-xs font-semibold border border-white/10 bg-white/5 text-slate-400 hover:text-white transition-all";
+                elements.wrapperIconUrl.classList.remove('hidden');
+                elements.wrapperIconPreset.classList.add('hidden');
+            }
+        }
+
+        // Selector Dinámico de Iconos Lucide Preset
+        function initPresetIconSelector() {
+            elements.iconSelectorGrid.innerHTML = '';
+            
+            PRESET_ICONS.forEach(iconName => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.setAttribute('data-icon', iconName);
+                btn.className = `icon-grid-item p-3 rounded-xl border border-white/5 bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition-all ${config.iconValue === iconName ? 'active-icon border-purple-500 bg-purple-500/10 text-purple-400' : ''}`;
+                
+                const icon = document.createElement('i');
+                icon.setAttribute('data-lucide', iconName);
+                icon.className = "w-5 h-5";
+                
+                btn.appendChild(icon);
+                elements.iconSelectorGrid.appendChild(btn);
+
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.icon-grid-item').forEach(item => {
+                        item.classList.remove('active-icon', 'border-purple-500', 'bg-purple-500/10', 'text-purple-400');
+                    });
+                    btn.classList.add('active-icon', 'border-purple-500', 'bg-purple-500/10', 'text-purple-400');
+                });
+            });
+        }
+
+        // 5. SISTEMA NOTIFICACIÓN TOASTS EN PANTALLA
+        function showToast(type, title, description) {
+            const toast = document.createElement('div');
+            
+            let iconMarkup = "";
+            let accentBorder = "";
+            
+            switch (type) {
+                case "success":
+                    iconMarkup = `<div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center"><i data-lucide="check-circle-2" class="w-4.5 h-4.5"></i></div>`;
+                    accentBorder = "border-emerald-500/30";
+                    break;
+                case "error":
+                    iconMarkup = `<div class="w-8 h-8 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center"><i data-lucide="alert-octagon" class="w-4.5 h-4.5"></i></div>`;
+                    accentBorder = "border-rose-500/30";
+                    break;
+                default:
+                    iconMarkup = `<div class="w-8 h-8 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center"><i data-lucide="info" class="w-4.5 h-4.5"></i></div>`;
+                    accentBorder = "border-blue-500/30";
+            }
+
+            toast.className = `glassmorphism p-4 rounded-2xl ${accentBorder} shadow-2xl flex gap-3 items-start transform translate-x-12 opacity-0 transition-all duration-300 pointer-events-auto`;
+            
+            toast.innerHTML = `
+                ${iconMarkup}
+                <div class="flex-grow">
+                    <h4 class="text-sm font-semibold text-slate-100">${title}</h4>
+                    <p class="text-xs text-slate-400 mt-1">${description}</p>
+                </div>
+                <button class="text-slate-500 hover:text-slate-300 transition-colors">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            `;
+
+            elements.toastContainer.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-12', 'opacity-0');
+            }, 50);
+
+            toast.querySelector('button').addEventListener('click', () => {
+                closeToast(toast);
+            });
+
+            setTimeout(() => {
+                closeToast(toast);
+            }, 4500);
+        }
+
+        function closeToast(toast) {
+            toast.classList.add('translate-x-12', 'opacity-0');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }
+
+        // Inicializar año dinámico
+        function initYear() {
+            elements.footerYear.textContent = new Date().getFullYear();
         }
     </script>
 </body>
